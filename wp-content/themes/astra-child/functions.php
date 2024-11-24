@@ -19,6 +19,11 @@ define( 'CHILD_THEME_ASTRA_CHILD_VERSION', '1.0.0' );
 function child_enqueue_styles() {
 
 	wp_enqueue_style( 'astra-child-theme-css', get_stylesheet_directory_uri() . '/style.css', array('astra-theme-css'), CHILD_THEME_ASTRA_CHILD_VERSION, 'all' );
+	wp_enqueue_style( 'astra-child-single-css', get_stylesheet_directory_uri() . '/location-style.css', array('astra-theme-css'));
+  wp_enqueue_style('slick-css', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css');
+  wp_enqueue_style('slick-theme-css', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css');
+  wp_enqueue_script('slick-js', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js', array('jquery'), null, true);
+	wp_enqueue_script( 'child-theme-js', get_stylesheet_directory_uri() . '/script.js',array( 'jquery' ),false);
 
 }
 
@@ -101,3 +106,49 @@ function enquiry(){
 
 <?php }
 add_shortcode("room_enquiry","enquiry");
+
+function display_posts_grid() {
+  
+  // Query the posts based on the given parameters
+  $args = array(
+      'posts_per_page' => -1,
+      'post_status' => 'publish',
+  );
+
+  $query = new WP_Query($args);
+
+  // Check if there are posts
+  if ($query->have_posts()) {
+      $output = '<div class="posts-grid-slider">';  // This will be the wrapper for Slick Slider
+
+      // Loop through posts
+      while ($query->have_posts()) {
+          $query->the_post();
+          $image_url = get_the_post_thumbnail_url(get_the_ID(), 'medium');
+          $categories = get_the_category();
+          $category = !empty($categories) ? esc_html($categories[0]->name) : 'Uncategorized';
+          $title = get_the_title();
+          $excerpt = get_the_excerpt();
+
+          // Create the HTML for each post
+          $output .= '<div class="grid-item">';
+          if ($image_url) {
+              $output .= '<div class="post-image"><img src="' . esc_url($image_url) . '" alt="' . esc_attr($title) . '"></div>';
+          }
+          $output .= '<div class="post-details">';
+          $output .= '<span class="category">' . esc_html($category) . '</span>';
+          $output .= '<h3 class="post-title">' . esc_html($title) . '</h3>';
+          $output .= '<p class="post-excerpt">' . esc_html($excerpt) . '</p>';
+          $output .= '</div></div>';
+      }
+
+      $output .= '</div>'; 
+      wp_reset_postdata();    
+      return $output;
+  } else {
+      return '<p>No posts found.</p>';
+  }
+}
+
+// Register the shortcode
+add_shortcode('posts_grid', 'display_posts_grid');

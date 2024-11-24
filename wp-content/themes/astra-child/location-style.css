@@ -1,0 +1,117 @@
+.breadcrumb-sec {
+    position: absolute;
+    font-size: 14px;
+    font-family: "DM Sans";
+    color: #666;
+    top: 155px;
+    padding: 0px 50px;
+  }
+  
+  .breadcrumb a {
+    text-decoration: none;
+    color: white;
+  }
+
+  .breadcrumb{
+    font-size: 16px;
+    line-height: 26px;
+    font-family: "DM Sans";
+    color: white;
+    -webkit-font-smoothing: antialiased;
+    padding:20px 0px;
+}
+  
+  .breadcrumb a:hover {
+    color: #0073e6;
+  }
+  
+  .breadcrumb > a:last-child {
+    color: #ffffff;
+  }
+  
+.site-content .ast-container {
+    padding: unset !important;
+    margin: unset !important;
+    display: contents;
+}
+.banner-section .post-title {
+    color: #FFF;
+    font-size: 36px;
+    line-height: 46px;
+    font-weight: 700;
+    margin-bottom: 0px;
+}
+.post-slider {
+    padding: 70px 0px;
+}
+
+.location-post-tittle {
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 36px;
+    color: #232323;
+    margin-bottom: 20px;
+}
+.location-row {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+.location-sec {
+    display: flex;
+}
+
+.location-sec .icon {
+    border: 1px solid #DEDEDE;
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 12px;
+    width: 48px;
+    height: 48px;
+} 
+.location-sec .info h4{
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 26px;
+    color: #232323;
+}
+.location-sec .info p{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    color:  #5E6D77;
+}
+.location-info-content p {
+    font-size: 15px;
+    line-height: 26px;
+    font-family: "DM Sans";
+    color: #666;
+}
+
+.location-highlight ul {
+    list-style: none;
+    margin: 0px 0px 0px 5px;
+}
+.location-highlight ul li {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 26px;
+    color: #5E6D77;
+    margin-bottom: 16px;
+}
+.location-highlight ul li i {
+    background: #CEF2E5;
+    color: #10AC58;
+    margin-right:10px;
+    border-radius: 50%;
+    font-size: 10px;
+    width: 20px !important;
+    height: 20px;
+    text-align: center;
+    line-height: 1;
+    padding: 5px;
+    margin-right: 10px;
+}
+.location-highlight {
+    margin-bottom: 60px !important;
+}
